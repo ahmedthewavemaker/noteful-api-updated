@@ -1,0 +1,46 @@
+.Sidebar{
+    
+    background-color: navy;
+    color: gold;
+    flex-direction: column;
+    list-style-type: none;    
+    float: left;
+ 
+}
+
+.addFolderButton{
+    background-color: #010d1e;;
+    margin-top: 20px;
+      margin-left: 10px;
+      height: 50px;
+      font-size:large;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 3px;
+}
+
+
+
+a{
+    font-size: large;
+    font-weight: bold;
+    list-style: none;
+}
+
+a:hover{
+    color: green;
+}
+a:link{
+    color: gold;
+}
+a:visited{
+    color: darkgoldenrod;
+}
+
+.active{
+    background-color: darkgreen;
+}
+
+.addFolderButton a{
+    color: gold;
+}

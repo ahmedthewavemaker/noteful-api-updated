@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import './App.css';
 import AppContext from './AppContext';
 import PropTypes from 'prop-types';
+import config from './config'
 
 
 
@@ -19,7 +20,7 @@ export default function AddNote(props) {
         // const folderz = context.folders.map(folder => <ul ><li >{folder.name}</li></ul>)
 
 
-        fetch(`http://localhost:8000/notes`, {
+        fetch(`${config.API_ENDPOINT}/notes`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -36,18 +37,18 @@ export default function AddNote(props) {
             
     }
 
-console.log(context.folders)
+
 
     return (
         <form onSubmit={onAddNote}>
             <h2 className='headerNoteAdd'>Add Notes</h2>
             <div className='AddNote'>* Required Field</div>
             <div className='noteName'>
-                <label  for='name'>Name* :    </label>
+                <label  htmlFor='name'>Name* :    </label>
                 <input name='name' placeholder='Note name' type='text' id='name' required/>
             </div>
             <div className='contentArea'>
-                <label  for='content' >Content :  </label>
+                <label  htmlFor='content' >Content :  </label>
                 <textarea name='content' placeholder='Insert content here'  id='content' />
             </div>
             <div className='folderNameSelect'>
@@ -55,7 +56,7 @@ console.log(context.folders)
                 <p>Folder : <select name='folderId'>
                     {context.folders.map(folder => {
                         return(
-                        <option value={folder.id}>{folder.name}</option>
+                        <option key={folder.id}value={folder.id}>{folder.name}</option>
                     )})}
                     
 
@@ -75,8 +76,5 @@ console.log(context.folders)
 }
 
 AddNote.propTypes={
-    name: PropTypes.string.isRequired,
-    note: PropTypes.any.isRequired,
-    match: PropTypes.any,
     history: PropTypes.any
 }

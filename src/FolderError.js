@@ -17,7 +17,7 @@ export default class FolderError extends Component {
 
     componentDidCatch(error){
         console.error(error);
-        console.log(error);
+       ;
     }
 
 

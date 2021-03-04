@@ -9,6 +9,7 @@ import './App.css';
 import AppContext from './AppContext';
 import AddFolder from './AddFolder';
 import AddNote from './AddNote';
+import config from './config';
 
 
 
@@ -27,8 +28,8 @@ class App extends Component {
 
 getData =()=> {
   Promise.all([
-  fetch(`http://localhost:8000/api/folders`),
-  fetch(`http://localhost:8000/api/notes`)
+  fetch(`${config.API_ENDPOINT}/folders`),
+  fetch(`${config.API_ENDPOINT}/notes`)
   ])
   
 

@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 export default function NoteDetail(props) {
     const context=useContext(AppContext)
-    const note = context.notes.find(note => note.id === props.match.params.noteId)
+    const note = context.notes.find(note => note.id === parseInt(props.match.params.noteId)) || {}
     return (
 
 

@@ -5,6 +5,7 @@ import moment from 'moment';
 import AppContext from './AppContext';
 import PropTypes from 'prop-types';
 import NoteError from './NoteError';
+import config from './config'
 
 
 
@@ -18,7 +19,7 @@ export default class MainPage extends React.Component {
 
     handleDeleteNote = (noteId) => {
         
-        fetch(`http://localhost:9090/notes/${noteId}`,{
+        fetch(`${config.API_ENDPOINT}/notes/${noteId}`,{
             method: 'DELETE',
              
         }) 
@@ -35,21 +36,21 @@ export default class MainPage extends React.Component {
     render(){
         let { notes=[] } = this.context;
         const { folderId } = this.props.match.params
-    //console.log(noteId, 'noteId')
+   
 
     if(folderId){
-        notes=notes.filter(note => note.folderId === folderId)
+        notes=notes.filter(note => note.folderid === parseInt(folderId))
     }
-    //console.log(noteId);
+   
     return (
        <div className='Mainpage'>
            <NoteError>
-          {notes.map(note => <div><ul><li key={note.id} className='note'>
+          {notes.map(note => <li key={note.id} className='note'>
                 <h2><Link to={'/note/'+note.id} >{note.name}</Link></h2>
                 <p>Date modified: {moment(note.modified).format('MM YYYY')}</p>
                 <button className='noteButton' onClick={e=>this.handleDeleteNote(note.id)}>Remove Note</button>
                
-           </li></ul> </div>)}
+           </li>)}
            <button className='noteAddButton'><Link to='/addnote'>Add Notes</Link></button>
            </NoteError>
        </div>

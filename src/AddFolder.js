@@ -1,6 +1,7 @@
 import React,{useContext} from 'react';
 import AppContext from './AppContext';
 import PropTypes from 'prop-types';
+import config from './config'
 
 
 
@@ -11,7 +12,7 @@ export default function AddFolder(props) {
     const name=event.target.name.value
     const folder={name}
     
-        fetch(`http://localhost:9090/folders`, {
+        fetch(`${config.API_ENDPOINT}/folders`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -30,7 +31,7 @@ export default function AddFolder(props) {
 
     return (
         <form onSubmit={onAddFolder}>
-            <label for='name'>
+            <label htmlFor='name'>
 
             </label>
             <input name='name' placeholder='Folder Name' required/>
@@ -40,7 +41,6 @@ export default function AddFolder(props) {
 }
 
 AddFolder.propTypes={
-    name: PropTypes.string.isRequired,
-    match: PropTypes.any,
+
     history: PropTypes.any
 }

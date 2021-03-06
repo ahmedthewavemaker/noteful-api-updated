@@ -20,7 +20,7 @@ export default function AddNote(props) {
         // const folderz = context.folders.map(folder => <ul ><li >{folder.name}</li></ul>)
 
 
-        fetch(`${config.API_ENDPOINT}/notes`, {
+        fetch(`${config.API_ENDPOINT}/api/notes`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
